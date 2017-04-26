@@ -1,0 +1,14 @@
+{
+  "write-env": {
+    "default": [
+      {
+        "name": "Baz"
+      }
+    ],
+    "test": [
+      {
+        "name": "bbb"
+      }
+    ]
+  }
+}

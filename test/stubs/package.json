@@ -1,0 +1,26 @@
+{
+  "write-env": {
+    "default": [
+      {
+        "name":        "FOO",
+        "description": "Foo for Great Justice!",
+        "default":     "foo",
+        "required":    true
+      },
+      {
+        "name":        "BAR",
+        "description": "simply not foo.",
+        "default":     "bar",
+        "required":    false
+      }
+    ],
+    "dev": [
+      {
+        "name":        "DEV",
+        "description": "Developers! Developers! Developers! GWAHARHGH!",
+        "default":     true,
+        "required":    false
+      }
+    ]
+  }
+}

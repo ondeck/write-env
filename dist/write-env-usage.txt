@@ -1,0 +1,56 @@
+
+Usage:
+  write-env [options] [overrides]
+
+Creates an environment variables file (.env)
+from defined and supplied settings.
+
+Write-Env accepts these optional settings.
+
+
+Options:
+
+  -c --create                       Allows you to pass additional key value
+                                    pairs that will be added to the file
+                                    and will override matching defaults.
+
+  -d=<path> --destination=<path>    Sets the destination path to write the
+                                    environment data.
+
+  -e=<type> --environment=<type>    Changes variable defaults to the
+                                    environment supplied. This changes
+                                    the output printed as well as the
+                                    file created.
+                                    NOTE: changing the environment will
+                                    change the name of the file created.
+                                    The name will be .env.[environment_name]
+
+  -f --force                        Overwrites existing .env files without
+                                    prompting.
+
+  -h --help                         Print this very copy you're reading
+                                    right now to the console.
+
+  -p --print                        Outputs environment variables
+                                    settings to the console.
+
+  -s=<path> --source=<path>         Sets the source file to read data from.
+                                    The default is package.json.
+
+
+
+
+Overrides:
+
+Any overrides supplied take precedence over defaults. Overrides are in the format NAME=value.
+
+Example:
+
+creates a .env file:
+write-env
+write-env -c
+write-env -c FOO=bar BAR=baz
+
+creates a .env.develop file
+write-env -e=develop
+write-env -c -e=develop

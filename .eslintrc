@@ -1,0 +1,9 @@
+{
+    "extends": "airbnb/base",
+    "parser": "babel-eslint",
+    "plugins": ["babel"],
+    "rules": {
+        "babel/generator-star-spacing": 1,
+        "no-use-before-define": ["error", { "functions": false, "classes": true }]
+    }
+}
