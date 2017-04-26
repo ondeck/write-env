@@ -30,45 +30,43 @@ There must be a `default` member of `write-env`, any others are optional.
 ```json
 {
 
-  [...additional package.json data...]
-
-  'write-env': {
+  "write-env": {
     "default": [
       {
-        name:        'FOO',
-        description: 'Foo for Great Justice!',
-        default:     'foo',
-        required:    true
+        "name":        "FOO",
+        "description": "Foo for Great Justice!",
+        "default":     "foo",
+        "required":    true
       },
       {
-        name:        'BAR',
-        description: 'simply not foo.',
-        default:     'bar',
-        required:    false
+        "name":        "BAR",
+        "description": "simply not foo.",
+        "default":     "bar",
+        "required":    false
       }
     ],
     // optional configurations
-    dev: [
+    "dev": [
       {
-        name: ...,
+        "name": "...",
       },
-      ...
+      "..."
     ],
-    test: [
+    "test": [
       {
-        name: ...,
+        "name": "...",
       },
-      ...
+      "..."
     ],
-    foo: [
+    "foo": [
       {
-        name: ...,
+        "name": "...",
       },
-      ...
+      "..."
     ]
   },
 
-  [...additional package.json data...]
+  "...additional package.json data..."
 
 }
 ```
