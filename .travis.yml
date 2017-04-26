@@ -1,4 +1,12 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+- '6'
+- '7'
+deploy:
+  provider: npm
+  email: opensource@ondeck.com
+  api_key:
+    secure: i+4fVUxmweUJ7lse05yhqt8sUirZi8CUEtkwnD6Nk6SS4bg60zsvBu3xUjT6ZtrwT4uHwSt/8JssQZbNMxtl+3F7AL2q5QS79xBXGuKxzJfC7zUEenXWuTH8KpcaIUFvX4tBs5R8f9Lw8cq9JV25IJ99n6IMIJJPMeZo8u2F16Wcrfod3sgSmZiHSWGVmnVeg+8gXIxJLmt6TX5ML0o86vVVRd92tWXcY6v1U1zTmBIdL4kcp/HEUICUmhvI9vp89A8ddBeMmv9zKgT1DdyLrCwENuw6j/+xqQBoiQBUzURyg7Ii+GP6n7Wfvm5TdpmybQ2wNZmYYHC6CVci11k/DJeu3SsuKFpk/fmBJbPyksEDO4Hn6SJqa8sDEJ+5oxPzxJI0yw6g3JXWelsmi58Ak3GzFINAxHlWrdX4H9SF9qAFa/sGvR/LLRlfcqkhYp0TXF5e1FErny3Uk6YbkcnYaTGvlo9JWitIs0t401JwIWrkpA2LLZASe1vOeoPiEwzuzElmnnMRfN8MKvdwDgqpcX80hP2Zb237V88UEkpqod8m1Pch1oZpeI1KMdGToxew3Lx6K9kZCj0XNUB7F/yWHNMHLle0hPSbLtddmMfVQF9HrAQg7c0ppDT45pC5omSyW3Rg1eQXQ/0OXeCc2nlnUmNBPOZLnvsnW0ny9t15lbk=
+  on:
+    tags: true
+    repo: ondeck/write-env
