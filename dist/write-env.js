@@ -241,7 +241,12 @@ var WriteEnv = function () {
     value: function getSource() {
       var sourcePath = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _get__('path').resolve(process.cwd(), this.options.source || 'package.json');
 
-      return require(sourcePath);
+      try {
+        return require(sourcePath);
+      } catch (err) {
+        console.log('Could not find a source file for write-env.');
+        process.exit(1);
+      }
     }
 
     /**
@@ -258,6 +263,11 @@ var WriteEnv = function () {
       var environment = this.options.environment;
       var source = this.getSource();
       var errorMsg = void 0;
+
+      if (!source) {
+        errorMsg = 'Could not find a valid source file for write-env.';
+        errorMsg += 'Please consult the documentation on setting up write-env.\n';
+      }
 
       if (source['write-env'] && source['write-env'][environment]) {
         return this.defaults = source['write-env'][environment];
