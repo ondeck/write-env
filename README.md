@@ -129,13 +129,13 @@ given the following package.json:
 
 ```json
 {
-  'write-env': {
+  "write-env": {
     "default": [
       {
-        name:        'FOO',
-        description: 'Foo for Great Justice!',
-        default:     'foo',
-        required:    true
+        "name":      "FOO",
+        "description": "Foo for Great Justice!",
+        "default":     "foo",
+        "required":    true
       }
     ]
   }

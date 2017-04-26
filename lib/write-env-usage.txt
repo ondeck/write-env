@@ -37,6 +37,7 @@ Options:
   -s=<path> --source=<path>         Sets the source file to read data from.
                                     The default is package.json.
 
+  -v --version                      Prints the installed version of write-env
 
 
 
