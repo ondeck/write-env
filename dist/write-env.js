@@ -116,9 +116,14 @@ var WriteEnv = function () {
   }, {
     key: 'run',
     value: function run() {
-
       // initialize data
       this.parseArgs();
+
+      // if showHelp is true don't do anything else, just in case
+      if (this.options.showHelp) return this.showHelp();
+
+      if (this.options.version) return this.showVersion();
+
       this.readEnvironmentDefaults();
 
       // overrides were supplied,
@@ -129,11 +134,6 @@ var WriteEnv = function () {
         } else {
           this.log('Ignoring overrides as create flag is not set.');
         }
-      }
-
-      // if showHelp is true don't do anything else, just in case
-      if (this.options.showHelp) {
-        return this.showHelp();
       }
 
       // if print is true, show that before create due to user prompts
@@ -161,7 +161,7 @@ var WriteEnv = function () {
       var _this = this;
 
       var rawArgs = process.argv.slice(2);
-      var booleanArgs = ['c', 'create', 'h', 'help', '?', 'f', 'force', 'p', 'print'];
+      var booleanArgs = ['c', 'create', 'h', 'help', '?', 'f', 'force', 'p', 'print', 'v', 'version'];
       var validArgs = ['_', 'd', 'destination', 'e', 'environment', 's', 'source'].concat(booleanArgs);
       var args = _get__('minimist')(rawArgs, { boolean: booleanArgs });
       var errorOutputString = '';
@@ -181,6 +181,9 @@ var WriteEnv = function () {
 
       // create flags
       if (args.c || args.create) _options.create = args.c || args.create;
+
+      // create flags
+      if (args.v || args.version) _options.version = args.v || args.version;
 
       // help flags
       if (args.h || args['?'] || args.help) _options.showHelp = args.h || args['?'] || args.help;
@@ -228,7 +231,7 @@ var WriteEnv = function () {
     }
 
     /**
-     * getSourceFile
+     * getSource
      *
      * Returns the contents of a source file. By default, it looks for a package.json file
      *
@@ -265,7 +268,7 @@ var WriteEnv = function () {
       var errorMsg = void 0;
 
       if (!source) {
-        errorMsg = 'Could not find a valid source file for write-env.';
+        errorMsg = 'Could not find a vaglid source file for write-env.';
         errorMsg += 'Please consult the documentation on setting up write-env.\n';
       }
 
@@ -523,7 +526,7 @@ var WriteEnv = function () {
     /**
      * showHelp
      *
-     * Outputs contents of help file to stdout.
+     * Outputs contents of help file to stdout and exits.
      * Exits process after output.
      *
      * @return {undefined}
@@ -534,6 +537,23 @@ var WriteEnv = function () {
     value: function showHelp() {
       var usagePath = _get__('path').resolve(__dirname, 'write-env-usage.txt');
       process.stdout.write(_get__('fs').readFileSync(usagePath, 'utf8'));
+      process.exit(0);
+    }
+
+    /**
+    * showVersion
+    *
+    * Outputs the current version of write-env and exits.
+    *
+    * @return {undefined}
+    */
+
+  }, {
+    key: 'showVersion',
+    value: function showVersion() {
+      var pkg = require(_get__('path').join(__dirname, '../package.json'));
+      process.stdout.write(pkg.version + '\n');
+      process.exit(0);
     }
   }]);
 

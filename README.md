@@ -90,24 +90,31 @@ Once installed, the application should add a binary to the node_modules director
 Calling `write-env` will run the script. If a .env file exists already, a prompt will ask if you would like to overwrite the file or abort. As a precaution when overwriting, the original file is stored as a backup `.orig` file for reference.
 
 **create a .env file**
+
 `write-env`
 
 **specify a different source file**
+
 `write-env -s=custom.json` **or** `write-env --source=custom.json`
 
 **specify a different destination file**
+
 `write-env -d=foo.env` **or** `write-env --destination=foo.env`
 
 **create a .env.dev file** assumes package.json has a write-env member with a dev member
+
 `write-env -e=dev`
 
 **print information about the current write-env status**
+
 `write-env -p` **or** `write-env --print`
 
 **output help text**
+
 `write-env -h` **or** `write-env --help` **or** `write-env -?`
 
 **force overwrite existing files**
+
 `write-env -f` **or** `write-env --force`
 
 >**Note:**
@@ -136,9 +143,11 @@ given the following package.json:
 ```
 
 running the following command:
+
 `write-env -c FOO=bar BAR=baz PORT=0000`
 
 will output this `.env` file:
+
 ```
 FOO=bar
 BAR=baz

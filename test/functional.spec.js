@@ -56,8 +56,25 @@ test('usage has priority over other flags', async t => {
   testUsage(t, await runCli(['-h', '-c']));
 });
 
+// Version
+
+test('shows version with -v flag', async t => {
+  let result = await runCli(['-v'])
+  t.regex(result.output, /^[\d]+\.[\d]+\.[\d]+/, 'should print version');
+  t.is(result.code, 0, 'versions exits with code 0');
+});
+
+test('shows version with --version flag', async t => {
+  let result = await runCli(['--version'])
+  t.regex(result.output, /^[\d]+\.[\d]+\.[\d]+/, 'should print version');
+  t.is(result.code, 0, 'versions exits with code 0');
+});
+
 test('notifies user overrides were ignored', async t => {
-  let result = await runCli(['-h', 'bar=baz']);
+  const testFolderPath = await generateFolder(t);
+  await copyFile(PACKAGE_JSON_PATH, path.resolve(testFolderPath, 'package.json'));
+
+  let result = await runCli(['bar=baz'], { directory: testFolderPath });
 
   t.regex(result.output, /Ignoring overrides/, 'notifies user overrides were ignored');
 });
