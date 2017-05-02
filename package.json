@@ -1,6 +1,6 @@
 {
   "name": "write-env",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "create environment variables file based on package settings",
   "main": "./dist/write-env.js",
   "ava": {
